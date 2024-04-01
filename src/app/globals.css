@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  /* --background-end-rgb: 255, 255, 255; */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+    --font-family-primary: Jost;
+    --font-family-default: Jost;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.animate-fadeInDown {
+  animation: fadeInDown 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(-50px);
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeInsould {
+  animation: fadeInsould 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(50px);
+}
+@keyframes fadeInsould {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-zoomIn {
+  animation: zoomIn 1s ease-out forwards;
+  opacity: 0;
+  transform: scale(0.5);
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.image-container {
+  opacity: 0;
+  animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes wiggle {
+  25% {
+    transform: translateX(-4px); /* Di chuyển sang trái */
+  }
+  50% {
+    transform: translateX(4px); /* Di chuyển sang phải */
+  }
+  75% {
+    transform: translateX(-4px); /* Di chuyển lại sang trái */
+  }
+  100% {
+    transform: translateX(0); /* Trở về vị trí ban đầu */
+  }
+}
+
+.wiggle-on-hover:hover {
+  animation: wiggle 1.2s ease-in-out; /* Áp dụng animation khi hover */
+}
+@keyframes slideFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.item-image-2 {
+  transition: transform 0.35s linear !important;
+  top: 76px !important;
+}
+.item-image {
+  position: absolute;
+  top: 20px;
+  right: 0;
+  transition: transform 0.3s linear;
+  opacity: 0;
+}
+.container:hover .item-image {
+  transform: translateX(-20px);
+  opacity: 1;
+}
+.imagehover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  transition: opacity 0.3s ease;
+}
+
+.container:hover .imagehover {
+  display: block;
+  opacity: 1;
+}
+.btn-on {
+  position: absolute;
+  bottom: 9.3rem;
+
+  opacity: 0;
+  left: 50%;
+  width: 70%;
+  height: 40px;
+
+  transform: translate(-50%, -50%);
+  transition: bottom 0.3s linear;
+}
+
+.container:hover .btn-on {
+  bottom: 10.4rem;
+  opacity: 1;
+}
+.active {
+  color: red !important;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+.imagehover {
+  display: none;
+}
+.slick-dots li button {
+  font-size: 0;
+  width: 10px;
+  height: 10px;
+  boder-radius: 100rem;
+  background-color: #eee;
+  bodder: none;
+  outline: none;
+}
+.slick-dots {
+  bottom: -60px !important;
+}
+
+.slick-dots .slick-active button {
+  bodder: 1px !important;
+  boder-color: red !important;
+  bodder-radius: 50% !important;
+}
+.slick-dots li {
+  bodder: 1px !important;
+  boder-color: red !important;
+  bodder-radius: 50% !important;
+}
+.itemfooter svg {
+  font-size: 29px;
+}
+.menuhover {
+  position: relative;
+}
+.dropmenu {
+  top: 100%;
+  border-top: 1px solid black;
+  opacity: 0;
+  left: 0;
+  display: none;
+}
+.btn-menu:hover .dropmenu {
+  display: block;
+  opacity: 1;
+}
