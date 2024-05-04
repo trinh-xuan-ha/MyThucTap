@@ -7,17 +7,17 @@ const textRender = [
     {
         title: "Best purchase I've made this winter! The color and knitting are exquisite and it's so comfy! went from NYC to Miami without ever taking it off. Super cute!!",
         author: "Christina M. - From Canada",
-        
+
     },
     {
         title: "Best purchase I’ve made this winter! The color and knitting are exquisite and it's so comfy! Went from NYC to Miami without ever taking it off. Super cute!!",
         author: "David Jame. - From America",
-       
+
     },
     {
         title: "trĩnh âu hà",
         author: "Christina M. - From Canada",
-        
+
     }
 ];
 var settings = {
@@ -26,36 +26,35 @@ var settings = {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1
-  };
+};
 export default function Testimonial() {
     return (
         <div className='max-w-7xl my-0 mx-auto'>
             <div className='text-center my-9'>
                 <h3>TESTIMONIAL</h3>
             </div>
-            
             <div className="testimonial-item">
-            <Slider {...settings}>
-                {
-                    textRender.map((item, index) => {
-                        return(
-                            <div key={index}>
-                                <p className='text-center my-5 px-36'><strong>{item.title}</strong></p>
-                                <div className='text-center'>
-                                    <p className='p-4 bg-slate-500 rounded-2xl inline-block hover:text-red-500'>{item.author}</p>
+                <Slider {...settings}>
+                    {
+                        textRender.map((item, index) => {
+                            return (
+                                <div key={index}>
+                                    <p className='text-center my-5 px-36'><strong>{item.title}</strong></p>
+                                    <div className='text-center'>
+                                        <p className='p-4 bg-[#f2f2f2] rounded-2xl inline-block hover:text-red-500'>{item.author}</p>
+                                    </div>
                                 </div>
-                            </div>
-                        );
-                    })
-                }
-            </Slider>
+                            );
+                        })
+                    }
+                </Slider>
             </div>
-           
+
         </div>
     );
 }
 
 
-   
+
 
 
