@@ -5,10 +5,7 @@ import m3 from "../../../public/images/3.webp";
 import m4 from "../../../public/images/4.webp";
 import m5 from "../../../public/images/5.webp";
 import m6 from "../../../public/images/6.webp";
-import m7 from "../../../public/images/7.webp";
 import Image from "next/image";
-import { Md5G } from "react-icons/md";
-
 export default function detailProduct() {
   return (
     <div className="border-t-2">

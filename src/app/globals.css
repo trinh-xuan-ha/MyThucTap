@@ -74,6 +74,26 @@
     @apply bg-background text-foreground;
   }
 }
+body {
+  overflow-x: hidden;
+}
+.slick-dots {
+  bottom: -40px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.slick-dots li button:before {
+  font-size: 10px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.slick-dots li {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
 .animate-fadeInDown {
   animation: fadeInDown 1s ease-out forwards;
   opacity: 0;
@@ -203,7 +223,9 @@
   transform: translate(-50%, -50%);
   transition: bottom 0.3s linear;
 }
-
+.bg-blue-500 {
+  background-color: #0000ff !important;
+}
 .container:hover .btn-on {
   bottom: 10.4rem;
   opacity: 1;
@@ -219,61 +241,24 @@
   display: none;
 }
 
-.slick-dots {
-  bottom: -60px !important;
-}
-
-.slick-dots .slick-active button {
-  bodder: 1px !important;
-  boder-color: red !important;
-  bodder-radius: 50% !important;
-}
-.slick-dots li {
-  bodder: 1px !important;
-  boder-color: red !important;
-  bodder-radius: 50% !important;
-}
 .itemfooter svg {
   font-size: 29px;
 }
-.bg-red {
-  background-color: #dc143c !important;
+.bg-black-500 {
+  background-color: black !important;
 }
-.bg-blue {
+.activelogin {
+  background-color: red !important;
+  transition: all 0.5s ease-in-out;
+  border-radius: 5px;
+}
+/* .bg-blue {
   background-color: #0000ff !important;
-}
+} */
 .btn-toggle {
   border: 3px solid #fff !important;
   box-shadow: 0 0 0 1px #1e3441;
-  /* background-color: orange !important; */
 }
 .actives {
   background-color: red !important;
 }
-/* .slick-dots {
-  margin-top: 0 auto;
-}
-.slick-dots li {
-  display: block;
-  background-color: red;
-  z-index:999;
-} */
-/* .slick-active {
-  display: inline-block;
-  background-color: red;
-  z-index:999;
-} */
-/* .menuhover {
-  position: relative;
-}
-.dropmenu {
-  top: 100%;
-  border-top: 1px solid black;
-  opacity: 0;
-  left: 0;
-  display: none;
-}
-.btn-menu:hover .dropmenu {
-  display: block;
-  opacity: 1;
-} */

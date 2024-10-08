@@ -14,7 +14,7 @@ var settings = {
   autoplay: true,
   autoplaySpeed: 2000,
 };
-export default function BtnThree() {
+export default function HvProduct() {
   const [data, setData] = useState([]);
 
   useEffect(() => {

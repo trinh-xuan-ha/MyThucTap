@@ -3,7 +3,7 @@ import { useShoppingContext } from "@/app/contexts/ShoppingContext";
 import Image from "next/image";
 
 export default function CartCheckout() {
-  const { cartQty, cartItems, totalPrice } = useShoppingContext();
+  const { cartItems } = useShoppingContext();
   return (
     <div className="flex flex-col gap-y-6">
       {cartItems.map((item) => {

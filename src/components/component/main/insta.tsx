@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import ProductLeft from "@/components/productleft/ProductLeft";
+import NotificationRun from "@/app/productlike/NotificationRun";
 
 export default function Insta() {
   const [images, setImages] = useState([]);
@@ -19,16 +20,19 @@ export default function Insta() {
 
   return (
     <nav className="mt-28">
-      <div className="px-[25px]">
+
+      <div className="">
         <div className="text-center">
           <h3 className="my-6">
             <strong className=" text-3xl">@ Insta Gallery</strong>
           </h3>
+          
           <div className="mb-10">
             <p>Follow us: @coolmate</p>
             <p>Share your style: #coolmate</p>
           </div>
           <ProductLeft />
+          <NotificationRun />
         </div>
         <div className="flex gap-x-2">
           {images.map((image: any, index: number) => (

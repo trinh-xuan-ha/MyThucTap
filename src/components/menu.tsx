@@ -7,113 +7,52 @@ import { IoMdHeart } from "react-icons/io";
 import { IoCartOutline } from "react-icons/io5";
 import React from "react";
 import { useState } from "react";
-import { usePathname } from "next/navigation";
 import { useEffect } from "react";
-import BtnTwo from "./hovermenu/BtnTwo";
-import BtnThree from "./hovermenu/BtnThree";
-import BtnFour from "./hovermenu/BtnFour";
-import BtnFive from "./hovermenu/BtnFive";
+import HvCollections from "@/components/hovermenu/BtnTwo";
+import HvProduct from "@/components/hovermenu/BtnThree";
+import HvOther from "@/components/hovermenu/BtnFour";
+import HvBlog from "@/components/hovermenu/BtnFive";
 import Account from "./login/Account";
 import Search from "./search/Search";
 import Submenu from "@/components/ui/submenu/Submenu";
 import { useShoppingContext } from "@/app/contexts/ShoppingContext";
 import Cart from "@/components/Cart/Cart";
+import { usePathname } from "next/navigation";
 
 const navLinks = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "/home" },
   {
     name: "ShCollectionsop",
-    href: "/collections",
-    submenu: [
-      { name: "a", href: "/fdfd" },
-      { name: "a", href: "/fdfd" },
-      { name: "a", href: "/fdfd" },
-      { name: "a", href: "/fdfd" },
-    ],
+    href: "/collection",
+    component: HvCollections
   },
-  // {
-  //     name: "Products",
-  //     href:"#/Products",
-  //     submenu: [
-  //         [
-  //             {name: "a1deeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a1eeeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a1eeeeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a1eeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a1eeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a1eeeeeeeeeeeee",href:"/"},
-  //         ],
-  //         [
-  //             {name: "a2deeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a2eeeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a2eeeeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a2eeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a2eeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a2eeeeeeeeeeeee",href:"/"},
-  //         ],
-  //         [
-  //             {name: "a3deeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a3eeeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a3eeeeeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "aeeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a3eeeeeeeeeeee",href:"/fdfd"},
-  //             {name: "a3eeeeeeeeeeeee",href:"/"},
-  //         ],
-  //         ]
-
-  // },
   {
     name: "products",
-    href: "#/Otherpages",
-    submenu: [
-      { name: "404 eror", href: "#/register" },
-      { name: "about us", href: "#/register" },
-      { name: "fAQs page", href: "#/register" },
-      { name: "store direction page", href: "#/register" },
-      { name: "store locations page", href: "#/register" },
-      { name: "testimonials", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-    ],
+    href: "/products",
+    component: HvProduct
   },
   {
     name: "Other pages",
-    href: "#/Otherpages",
-    submenu: [
-      { name: "404 eror", href: "#/register" },
-      { name: "about us", href: "#/register" },
-      { name: "fAQs page", href: "#/register" },
-      { name: "store direction page", href: "#/register" },
-      { name: "store locations page", href: "#/register" },
-      { name: "testimonials", href: "#/register" },
-      { name: "size guide page", href: "#/register" },
-    ],
+    href: "/otherPages",
+    component: HvOther
+
   },
   {
     name: "Blog",
-    href: "#/login",
-    submenu: [
-      { name: "Blog Left Sidebar", href: "#/login" },
-      { name: "blog right sidebar", href: "#/register" },
-      { name: "blog without sidebar", href: "#/register" },
-      { name: "blog column view", href: "#/register" },
-      { name: "blog detail left sidebar", href: "#/register" },
-      { name: "blog detail without sidebar", href: "#/register" },
-    ],
+    href: "/blog",
+    component: HvBlog
+
   },
-]; //JSON.stringify();
+];
 
 export default function Menu() {
   const [accountOpen, setAccountOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
-  const { cartQty } = useShoppingContext();
+  const { cartQty, cartWish } = useShoppingContext();
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
+
   const handleButtonCart = () => {
     setCartOpen(false);
   };
@@ -122,10 +61,6 @@ export default function Menu() {
   };
   const handleButtonClick = () => {
     setAccountOpen(false);
-  };
-  const [wishlist, setWishlist] = useState(0);
-  const heart = () => {
-    setWishlist(wishlist + 1);
   };
   const [activeLink, setActiveLink] = useState(0);
 
@@ -151,19 +86,18 @@ export default function Menu() {
       <nav className=" flex items-center justify-between h-full">
         <div className=" flex flex-1 items-center gap-x-5 h-full">
           {navLinks.map((link, index) => (
-            <div key={index} className={`h-full py-7  group/menu-parent`}>
+            <div key={index} className={`h-full py-7 group/menu-parent`}>
               <Link
                 href={link.href}
                 onClick={() => handleLinkClick(index)}
-                className={` btn-menu font-bold hover:text-red-500 transition-colors duration-300`}
+                className={`link ${pathname === link.href ? 'text-red-500' : ''} font-bold hover:text-red-500 transition-colors duration-300`}
                 key={link.name}
               >
                 {link.name}
               </Link>
-              {index === 1 && <BtnTwo />}
-              {index === 2 && <BtnThree />}
-              {index === 3 && <BtnFour />}
-              {index === 4 && <BtnFive />}
+              {link.name && link.component && (
+                <link.component />
+              )}
             </div>
           ))}
         </div>
@@ -200,11 +134,13 @@ export default function Menu() {
           </div>
           <div>
             <label className="flex items-center gap-x-2 relative transition-colors duration-300 hover:text-red-500">
-              <IoMdHeart className="text-2xl" />
-              Wishlist
-              <p className="absolute left-4 -top-3 w-5 h-5 bg-black text-white text-sm rounded-full text-center">
-                {wishlist}
-              </p>
+              <Link href={"/productlike"} className="flex gap-x-2">
+                <IoMdHeart className="text-2xl" />
+                Wishlist
+                <p className="absolute left-4 -top-3 w-5 h-5 bg-black text-white text-sm rounded-full text-center">
+                  {cartWish}
+                </p>
+              </Link>
             </label>
           </div>
           <div>

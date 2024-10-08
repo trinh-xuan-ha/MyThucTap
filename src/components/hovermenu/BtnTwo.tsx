@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Myimage from "../../../public/images/35.webp";
 
-export default function BtnTwo() {
+export default function HvCollections() {
   return (
     <div className="w-full border-2 border-[#e7e8eb] bg-white left-0  absolute top-full hidden  group-hover/menu-parent:block z-[999]">
       <div className="flex gap-x-2 w-[1510px] my-0 mx-auto py-5">
@@ -10,7 +10,7 @@ export default function BtnTwo() {
           <ul className="w-1/4 flex flex-col gap-y-4 text-left">
             <strong className="mb-3">COOLECVTION PAGE</strong>
             <li>
-              <Link href={"#"}>Collection Left Sidear</Link>
+              <Link href={"/women"}>Collection Left Sidear</Link>
             </li>
             <li>
               <Link href={"#"}>Collection Right Sidebar</Link>
@@ -31,7 +31,7 @@ export default function BtnTwo() {
               <Link href={"#"}>Collection Canvas On Left</Link>
             </li>
             <li>
-              <Link href={"#"}>Collection Canvas On Top</Link>
+              <Link href={"/women"}>Collection Canvas On Top</Link>
             </li>
             <li>
               <Link href={"#"}>Collection Canvas On Bottom</Link>

@@ -30,7 +30,7 @@ export default function HeaderTop() {
                         className={`flex hover:text-[#fb5300] transition-colors duration-300`}
                         href={"mailto:trinhxuanha@gmail.com"}
                     >
-                        trinhxuanha@gmail.com
+                       coolmate@gmail.com
                     </Link>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { formatCurrency } from "@/helpers/common";
 type CartItemProps = {
   id: number;
   name: string;
-  avatar?: string;
+  avatar: string;
   price: number;
   qty: number;
   size: string;
@@ -24,8 +24,9 @@ export default function CartItem({
   return (
     <div className="relative p-3 flex items-center gap-x-6 border-2">
       <div
-        className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 p-2 bg-[#e9e9e9] rounded-full z-[9999]"
-        onClick={() => removeCartItem(id)}
+        className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 p-2 bg-[#e9e9e9] cursor-pointer rounded-full z-[9999]"
+        onClick={() => 
+          removeCartItem(id)}
       >
         <IoTrashOutline />
       </div>
@@ -46,17 +47,17 @@ export default function CartItem({
       <div className="">
         <strong>{name}</strong>
         <div className="flex item-center gap-x-1">
-          <p className="text-red-500">{color}</p>/
+          <p className="text-red-500">{color}</p>
           <p className="uppercase">{size}</p>
         </div>
       </div>
       <strong>{formatCurrency(price)}</strong>
       <div className="flex gap-x-4 cursor-pointer items-center justify-center">
-        <p className="p-2 bg-slate-100" onClick={() => decreaseQty(id)}>
+        <p className="h-8 w-8 font-bold text-lg border-2 flex items-center justify-center bg-slate-100 " onClick={() => decreaseQty(id)}>
           -
         </p>
         <p>{qty}</p>
-        <p className="p-2 bg-slate-100" onClick={() => increaseQty(id)}>
+        <p className="h-8 w-8 font-bold text-lg border-2 flex items-center justify-center bg-slate-100 " onClick={() => increaseQty(id)}>
           +
         </p>
       </div>

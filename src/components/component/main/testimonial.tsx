@@ -1,8 +1,7 @@
 "use client"
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+
 const textRender = [
     {
         title: "Best purchase I've made this winter! The color and knitting are exquisite and it's so comfy! went from NYC to Miami without ever taking it off. Super cute!!",
@@ -15,8 +14,8 @@ const textRender = [
 
     },
     {
-        title: "trĩnh âu hà",
-        author: "Christina M. - From Canada",
+        title: "Best purchase I’ve made this winter! The color and knitting are exquisite and it's so comfy! Went from NYC to Miami without ever taking it off. Super cute!!",
+        author: "Taylor S, From Germany",
 
     }
 ];

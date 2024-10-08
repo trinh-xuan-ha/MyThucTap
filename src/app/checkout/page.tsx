@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import imgvisa from "../../../public/images/OIP (1).jpg";
 import imgMaterCart from "../../../public/images/Mastercard-Logo-1979.png";
 import imgdiscover from "../../../public/images/OIP.jpg";
@@ -9,9 +8,9 @@ import { CiLock } from "react-icons/ci";
 import { HiOutlineQuestionMarkCircle } from "react-icons/hi2";
 import { Button } from "@/components/ui/button";
 import { useShoppingContext } from "@/app/contexts/ShoppingContext";
-import CartItem from "@/components/Cart/CartItem";
 import { formatCurrency } from "@/helpers/common";
 import CartCheckout from "@/app/checkout/cartcheckout";
+import Account from "@/components/login/Account";
 
 type MyTmageProps = {
   src: string | StaticImageData;
@@ -42,7 +41,8 @@ export default function CheckOut() {
   const [country, setCountry] = useState("--Country--");
   const [countryitems, setCountryitems] = useState([]);
   const [isBillingSameAsShipping, setIsBillingSameAsShipping] = useState(true);
-  const { cartItems, cartQty, totalPrice } = useShoppingContext();
+  const { totalPrice } = useShoppingContext();
+  const [accountOpen, setAccountOpen] = useState(false);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -55,6 +55,9 @@ export default function CheckOut() {
     };
     fetchData();
   }, []);
+  const handleButtonClick = () => {
+    setAccountOpen(false);
+  };
   return (
     <nav>
       <div className="w-[1320px] my-0 mx-auto flex">
@@ -63,9 +66,14 @@ export default function CheckOut() {
             <div className="contact flex flex-col gap-y-2 ">
               <div className="flex items-center justify-between">
                 <h2 className="font-bold">Contact</h2>
-                <Link className="text-sky-400" href={"/"}>
+                <p 
+                onClick={() => {
+                  setAccountOpen(true);
+                }}
+                className="text-sky-400 underline cursor-pointer">
                   Login
-                </Link>
+                </p>
+                {accountOpen && <Account onClose={handleButtonClick} />}
               </div>
               <input
                 type="text"

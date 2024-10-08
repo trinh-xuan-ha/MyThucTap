@@ -8,13 +8,14 @@ import { useShoppingContext } from "@/app/contexts/ShoppingContext";
 import { formatCurrency } from "@/helpers/common";
 import Link from "next/link";
 
-export default function Cart({ onClose }) {
-  const [registerOpen, setRegisterOpen] = useState(false);
-  const [loginOpen, setLoginOpen] = useState(true);
+type isOnclose = {
+  onClose: () => void;
+}
+export default function Cart({ onClose }: isOnclose) {
   const [activeLink, setActiveLink] = useState(0);
-  const [clothingItems, setClothingItems] = useState([]);
   const [clothingItemsCart, setClothingItemsCart] = useState([]);
   const { cartItems, totalPrice } = useShoppingContext();
+  const [active, setActive] = useState(false);
 
   useEffect(() => {
     const btns = document.querySelectorAll(".btn-login");
@@ -26,24 +27,7 @@ export default function Cart({ onClose }) {
       }
     });
   }, [activeLink]);
-  const handleLinkClick = (index: number) => {
-    setActiveLink(index);
-    if (index === 0) {
-      setRegisterOpen(false);
-    } else setRegisterOpen(true);
-  };
-  useEffect(() => {
-    const fetData = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/cart");
-        const data = await response.json();
-        setClothingItems(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetData();
-  }, []);
+
   useEffect(() => {
     const fetData = async () => {
       try {
@@ -91,7 +75,7 @@ export default function Cart({ onClose }) {
                         <CartItem key={item.id} {...item} />
                       ))
                     ) : (
-                      <p>bạn chưa có sản phẩm nào</p>
+                      <p>You don`t have any products yet</p>
                     )}
                   </div>
                 </div>
@@ -115,17 +99,21 @@ export default function Cart({ onClose }) {
                     </Button>
                   </div>
                   <form className="flex gap-x-2 my-7 items-center">
-                    <input type="checkbox" className="h-4 w-4" />
+                    <input
+                      checked={active}
+                      onChange={(e) => setActive(e.target.checked)}
+                      type="checkbox" className="h-4 w-4 bg-red-500 cursor-pointer" />
                     <label className="flex items-center gap-x-1">
                       I Agree with the
                       <strong>Terms & conditios</strong>
                     </label>
                   </form>
                   <Button
-                    className="w-full uppercase text-center "
-                    variant={"destructive"}
+                  onClick={() => onClose()}
+                    className={`w-full uppercase text-center ${active ? 'bg-[#e7e8eb] text-black hover:text-white hover:bg-black' : 'bg-[#e7e8eb] opacity-30 text-[#3f4045]'}`}
+                    disabled={!active}
                   >
-                    <Link href={"/checkout"}>PROCEED TO CHECKOUT</Link>
+                    <Link href={active ? "/checkout" : "#!"}>PROCEED TO CHECKOUT</Link>
                   </Button>
                 </div>
               </div>
@@ -153,7 +141,7 @@ export default function Cart({ onClose }) {
                         />
                       )}
                       <div className="flex flex-col items-center justify-center">
-                        <strong>{item.name}</strong>
+                        <strong className="text-center uppercase">{item.name}</strong>
                         <strong>{formatCurrency(item.price)}</strong>
                       </div>
                     </div>
