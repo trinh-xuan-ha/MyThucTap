@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { MdOutlineStar, MdOutlineStarBorder } from "react-icons/md";
@@ -126,26 +126,24 @@ export default function WomenPage() {
     return ArryStars;
   };
 
-
-  const pathname = usePathname()
+  // const pathname = usePathname();
   return (
     <nav className="m-auto">
       <div className="bg-[#f4f4f4] mb-8 flex flex-col gap-y-2">
         <div className="w-3/5 my-0 mx-auto h-80 flex items-center gap-x-3 text-2xl">
-          <Link href={"/home"} className="hover:text-red-500">Home</Link>
-          .
-          <p>Women</p>
-          <Link className={`link ${pathname === '/' ? 'active' : ''}`} href="/">
-        Home
-      </Link>
- 
-      <Link
-        className={`link ${pathname === '/about' ? 'active' : ''}`}
-        href="/about"
-      >
-        About
-      </Link>
-
+          {/* <Link href={"/home"} className="hover:text-red-500">
+            Home
+          </Link>
+          .<p>Women</p>
+          <Link className={`link ${pathname === "/" ? "active" : ""}`} href="/">
+            Home
+          </Link>
+          <Link
+            className={`link ${pathname === "/about" ? "active" : ""}`}
+            href="/about"
+          >
+            About
+          </Link> */}
         </div>
       </div>
       <div className={``}>
@@ -195,8 +193,8 @@ export default function WomenPage() {
                 <button
                   onClick={(e) => {
                     e.preventDefault();
-                    e.stopPropagation()
-                    handleOpen(index)
+                    e.stopPropagation();
+                    handleOpen(index);
                   }}
                   className={`absolute left-1/2 -translate-y-1/2 -translate-x-1/2 w-4/5 h-10 -bottom-4 opacity-0 group-hover:opacity-100 group-hover:bottom-3 duration-700 ease-in-out flex items-center justify-center hover:bg-red-500 bg-black text-white font-bold rounded cursor-pointer`}
                 >
@@ -221,13 +219,14 @@ export default function WomenPage() {
                         {item.size.map((size: string, index: number) => (
                           <button
                             key={index}
-                            className={`text-center p-1 text-black ring-2 ring-transparent transition-all border-2 rounded-md hover:border-black ${index === item.selectedSizeIndex
-                              ? "bg-red-500 text-white"
-                              : ""
-                              }`}
+                            className={`text-center p-1 text-black ring-2 ring-transparent transition-all border-2 rounded-md hover:border-black ${
+                              index === item.selectedSizeIndex
+                                ? "bg-red-500 text-white"
+                                : ""
+                            }`}
                             onClick={(e) => {
                               e.preventDefault();
-                              e.stopPropagation()
+                              e.stopPropagation();
                               handleSizeClick(item.id, index);
                               setAddCart(true);
                             }}
@@ -239,8 +238,8 @@ export default function WomenPage() {
                       <button
                         onClick={(e) => {
                           e.preventDefault();
-                          e.stopPropagation()
-                          handleAddToCart(item)
+                          e.stopPropagation();
+                          handleAddToCart(item);
                         }}
                         className={`h-[40px] w-full flex items-center justify-center bg-slate-400 text-white font-bold rounded mt-2 `}
                       >
@@ -261,11 +260,12 @@ export default function WomenPage() {
                   {item.color.map((color: string, index: number) => (
                     <strong
                       key={index}
-                      className={`bg-${color}-500 h-6 w-6 rounded-full border ${index === item.selectedColorIndex ? "btn-toggle" : ""
-                        }`}
+                      className={`bg-${color}-500 h-6 w-6 rounded-full border ${
+                        index === item.selectedColorIndex ? "btn-toggle" : ""
+                      }`}
                       onClick={(e) => {
                         e.preventDefault();
-                        e.stopPropagation()
+                        e.stopPropagation();
                         handleColorClick(item.id, index);
                         handleOnHover();
                       }}
@@ -275,7 +275,6 @@ export default function WomenPage() {
               </div>
             </Link>
           ))}
-
 
           {openCart && <Cart onClose={() => setOpenCart(false)} />}
         </div>

@@ -34,7 +34,7 @@ export default function ImagePage() {
     }, 5000); // Cập nhật mỗi 5 giây
 
     return () => clearInterval(intervalId);
-  }, []);
+  }, [Images.length]);
 
   return (
     <div className="z-10">

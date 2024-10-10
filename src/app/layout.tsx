@@ -19,6 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+
       <body className={jost.className}>
         <ShoppingContextProvider >
           <Header />
@@ -26,6 +27,7 @@ export default function RootLayout({
           <Footer />
         </ShoppingContextProvider>
       </body>
+
     </html>
   );
 }
