@@ -1,12 +1,12 @@
-// 'use client'
+'use client'
 
 import { useRouter } from "next/navigation";
 export default function Collections() {
-    // const rounded = useRouter();
+    const rounded = useRouter();
 
-    // const hanfleBtn = () => {
-    //     rounded.push("/");
-    // }
+    const hanfleBtn = () => {
+        rounded.push("/");
+    }
     return(
         <div>Collections
               <div>

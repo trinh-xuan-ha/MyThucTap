@@ -126,12 +126,12 @@ export default function WomenPage() {
     return ArryStars;
   };
 
-  // const pathname = usePathname();
+  const pathname = usePathname();
   return (
     <nav className="m-auto">
       <div className="bg-[#f4f4f4] mb-8 flex flex-col gap-y-2">
         <div className="w-3/5 my-0 mx-auto h-80 flex items-center gap-x-3 text-2xl">
-          {/* <Link href={"/home"} className="hover:text-red-500">
+          <Link href={"/home"} className="hover:text-red-500">
             Home
           </Link>
           .<p>Women</p>
@@ -143,7 +143,7 @@ export default function WomenPage() {
             href="/about"
           >
             About
-          </Link> */}
+          </Link>
         </div>
       </div>
       <div className={``}>
